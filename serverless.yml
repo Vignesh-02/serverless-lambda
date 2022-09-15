@@ -10,7 +10,7 @@ provider:
 
 
 functions:
-  hello:
+  function_test1:
     handler: src/handler.generateRandomNumber
     timeout: 60
     memorySize: 128
