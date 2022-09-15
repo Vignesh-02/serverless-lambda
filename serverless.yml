@@ -5,8 +5,8 @@ service: serverless-lambda
 provider:
   name: aws
   runtime: nodejs12.x
- stage: dev
- region: us-east-1
+  stage: dev
+  region: us-east-1
 
 
 functions:
