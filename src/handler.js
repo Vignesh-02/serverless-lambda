@@ -1,24 +1,31 @@
 "use strict";
 
-module.exports.generateRandomNumber = (event) => {
-    const response = { statusCode: 200 };
-    try {
-        const num = parseInt(Math.random() * 10);
-        //   Adding number 7 to it
-        const out = num + 7;
+module.exports.generateRandomNumber = () => {
+  try {
+    const num = Math.floor(Math.random() * 10);
+    const out = num + 7;
 
-        response.body = JSON.stringify({
-            message: "Successfully generated a random lucky number",
-            number: out,
-        });
-    } catch (err) {
-        console.log(err);
-        response.statusCode = 500
-        response.body = JSON.stringify({
-            message: "Failed to generate random number",
-            error: err.message,
-            errorStack: err.stack
-        });
-    }
-    return response;
+    return {
+      statusCode: 200,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Successfully generated a random lucky number",
+        number: out
+      })
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      statusCode: 500,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Failed to generate random number",
+        error :err.message
+      })
+    };
+  }
 };
