@@ -4,13 +4,19 @@ service: serverless-lambda
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs20.x
   stage: dev
   region: us-east-1
+  timeout: 60
+  memorySize: 128
 
 
 functions:
   function_test1:
     handler: src/handler.generateRandomNumber
-    timeout: 60
-    memorySize: 128
+    events:      
+      - http:
+          path: getNumber
+          method: GET
+          cors: true  
+    
