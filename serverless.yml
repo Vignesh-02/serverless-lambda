@@ -16,7 +16,7 @@ functions:
     handler: src/handler.generateRandomNumber
     events:      
       - http:
-          path: getNumber
+          path: /getNumber
           method: GET
           cors: true  
     
