@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports.generateRandomNumber = () => {
+module.exports.generateRandomNumber = async (event, context) => {
   try {
     const num = Math.floor(Math.random() * 10);
     const out = num + 7;
@@ -24,7 +24,7 @@ module.exports.generateRandomNumber = () => {
       },
       body: JSON.stringify({
         message: "Failed to generate random number",
-        error :err.message
+        error: err.message
       })
     };
   }
